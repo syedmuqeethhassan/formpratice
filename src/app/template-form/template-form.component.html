@@ -1,0 +1,132 @@
+<div style="display: flex;">
+<div class="container"  style="border:2px solid grey;margin:10px;padding:20px;margin-left: 200px;width: 30%;">
+    
+
+<form #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm.value)">
+    <div>
+    <label for="firstName">firstName</label><br>
+    <input name="firstName" required pattern="[a-zA-Z][a-zA-Z ]+" [(ngModel)]="firstName" /><br>
+    <div *ngIf="registrationForm.controls['firstName'].errors && registrationForm.controls['firstName'].dirty && registrationForm.controls['firstName'].errors.required">
+        Name is required
+    </div>
+    <div *ngIf="registrationForm.controls['firstName'].errors && registrationForm.controls['firstName'].errors.pattern">
+        Name is invalid
+        
+    </div>
+    
+</div>
+<div>
+    
+</div>
+<div>
+    <label for="lastName">lastName</label><br>
+    <input name="lastName" required pattern="[a-zA-Z][a-zA-Z ]+" [(ngModel)]="lastName" /><br>
+    <div *ngIf="registrationForm.controls['lastName'].errors && registrationForm.controls['lastName'].dirty && registrationForm.controls['lastName'].errors.required">
+        Last Name is required.
+     </div>
+
+
+    <div *ngIf="registrationForm.controls['lastName'].errors && registrationForm.controls['lastName'].errors.pattern">
+       Last Name is invalid.
+    </div>
+
+</div> 
+
+<div>
+    <label for="middleName">middleName</label><br>
+    <input name="middleName" maxlength="4" pattern="[a-zA-Z][a-zA-Z ]+" [(ngModel)]="middleName" /><br>
+    <div *ngIf="registrationForm.controls['middleName'].errors && registrationForm.controls['middleName'].errors.pattern ">
+        Middle Name is invalid
+    </div>
+</div>
+<div>
+    <label for="emailAddress">email address</label><br>
+    <input name="emailAddress" required email="true" required [(ngModel)]="emailAddress" /><br>
+    <div *ngIf="registrationForm.controls['emailAddress'].errors && registrationForm.controls['emailAddress'].errors.email ">
+        email is invalid.
+    </div>
+    <div *ngIf="registrationForm.controls['emailAddress'].errors && registrationForm.controls['emailAddress'].errors.required ">
+        email is required
+    </div>
+</div>
+<div>
+    <label for="mobileNumber">number</label><br>
+    <input name="mobileNumber" required pattern="@^[0-9*#+]+$" [(ngModel)]="mobileNumber"/><br>
+    <div *ngIf="registrationForm.controls['mobileNumber'].errors && registrationForm.controls['mobileNumber'].errors.required ">
+        mobile is required
+    </div>
+    <div *ngIf="registrationForm.controls['mobileNumber'].errors && registrationForm.controls['mobileNumber'].errors.pattern ">
+        mobile is invalid
+    </div>
+</div>
+<div>
+    <label for="dateOfBirth">dateOfBirth</label><br>
+    <input name="dateOfBirth" required  type="date" [(ngModel)]="dateOfBirth" /><br>
+    <div *ngIf="registrationForm.controls['dateOfBirth'].errors && registrationForm.controls['dateOfBirth'].dirty && registrationForm.controls['dateOfBirth'].errors.required">
+        date of birth is required
+    </div>
+</div>
+<div style="width:30%;">
+    <label for="city">place</label><br>
+    <select class="form-control" required [(ngModel)]="place" name="place">
+        <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+    </select>
+    <div *ngIf="registrationForm.controls['place'].errors && registrationForm.controls['place'].dirty &&  registrationForm.controls['place'].errors.required">
+        place is required
+    </div>
+</div>
+<div>
+    <label for="address">address</label><br>
+    <textarea cols="35" rows="3" m required name="address" maxlength="25" [(ngModel)]="address" id="address" placeholder="Just 10 characters allowed"></textarea>
+    <div *ngIf="registrationForm.controls['address'].errors && registrationForm.controls['address'].dirty &&  registrationForm.controls['address'].errors.required">
+        place is required
+    </div>
+</div>
+<div>
+ <label for="zipcode">zipcode</label><br>
+    <input name="zipcode" required maxlength="5" pattern="[0-9]*" [(ngModel)]="zipcode">
+    <div *ngIf="registrationForm.controls['zipcode'].errors && registrationForm.controls['zipcode'].errors.required">
+        zipcode is required
+    </div>
+
+    <div *ngIf="registrationForm.controls['zipcode'].errors && registrationForm.controls['zipcode'].errors.pattern">
+        zipcode is invalid
+    </div>
+
+</div>
+<div>
+    <label for="gender">gender</label><br>
+    <input type="radio" required name='gender' value='Male' [(ngModel)]='gender'>Male
+    <input type="radio" required name='gender' value='Female' [(ngModel)]='gender'>Female
+</div>
+
+
+    <div *ngIf="registrationForm.valid"> 
+        <button class="btn btn-primary">register</button>
+    {{registrationForm.value | json}}
+    </div>
+
+    
+</form>
+</div>
+<div style="border:2px solid grey;margin:10px;padding:20px;margin-left: 200px;width: 30%;">
+   <div  *ngIf="submitted"> firstname:{{firstName}}</div>
+   <div  *ngIf="submitted"> lastName:{{lastName}}</div>
+   <div  *ngIf="submitted"> middleName:{{middleName}}</div>
+   <div  *ngIf="submitted"> emailAddress:{{emailAddress}}</div>
+   <div  *ngIf="submitted"> mobileNumber:{{mobileNumber}}</div>
+   <div  *ngIf="submitted"> dateOfBirth:{{dateOfBirth}}</div>
+   <div  *ngIf="submitted"> place:{{place}}</div>
+   <div  *ngIf="submitted"> address:{{address}}</div>
+   <div  *ngIf="submitted"> gender:{{gender}}</div>
+   
+
+
+
+
+
+
+   </div>
+
+
+</div>
